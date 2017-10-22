@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+    bcm2835_stub.cpp \
+    blink.c \
+    pin.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    ../../../bcm2835.h \
+    bcm2835.h \
+    pin.h
 
 FORMS    += mainwindow.ui
