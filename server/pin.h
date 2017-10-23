@@ -16,7 +16,7 @@ public:
     int pullUp;
     int state;
     int get();
-    void set();
+    void set(int state);
     void setOutput();
     void setInput();
     void changeDirection();
