@@ -11,38 +11,45 @@ pin::pin(int numar,int direction)
 }
 
 
-void pin::set()
+void pin::set(int state)
 {
-    if(this->direction == 1 && this -> state == 0)
+    if(this->direction == 1 && state == 0)
        {
-        bcm2835_gpio_write(this -> numar, HIGH);
-        this ->state = 1;
+        bcm2835_gpio_write(this -> numar, LOW);
+        this ->state = 0;
         }
-    else if(this->direction == 1 && this -> state == 1)
+    else if(this->direction == 1 &&  state == 1)
          {
-            bcm2835_gpio_write(this -> numar, LOW);
-            this ->state = 0;
+            bcm2835_gpio_write(this -> numar, HIGH);
+            this ->state = 1;
         }
 
 }
 
 int pin::get()
 {
-    if(this -> direction == 0 && this -> direction == INPUT)
+    if(this -> direction == INPUT)
     return  bcm2835_gpio_lev(this->numar);
-    else return this -> state;
+    else return -1;
 }
 
 void pin::changeDirection()
 {
     if(this->direction == 0)
+    {
         this ->direction = 1;
-    else this ->direction = 0;
+        this->setOutput();
+    }
+    else{
+
+        this ->direction = 0;
+        this->setInput();
+    }
 }
 
 void pin::setOutput()
 {
-     bcm2835_gpio_fsel(this->numar, BCM2835_GPIO_FSEL_INPT);
+    bcm2835_gpio_fsel(this->numar, BCM2835_GPIO_FSEL_OUTP);
     this -> direction = OUTPUT;
 }
 
