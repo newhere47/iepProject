@@ -26,10 +26,9 @@ int main(int argc, char *argv[])
         {
             temp = pwm_led -> getFdu();
             temp = temp + (temp*10)/100;
-            pwm_led ->setFdu(temp);
-            temp = pwm_led -> getFdu();
             if(temp >= pwm_led -> getRange())
                 pwm_led ->setFdu(1);
+            else  pwm_led ->setFdu(temp);
         }
                bcm2835_delay(100);
     }
