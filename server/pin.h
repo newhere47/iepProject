@@ -15,6 +15,7 @@ public:
     int direction;
     int pullUp;
     int state;
+    int voltage;
     int get();
     void set(int state);
     void setOutput();

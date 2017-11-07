@@ -13,13 +13,13 @@ pwm::pwm(int frecventa,int fdu)
 }
 
 
-void pwm::setFdu(int fdu)
+void pwm::setFdu(double fdu)
 {
     this -> fdu = fdu;
      bcm2835_pwm_set_data(PWM_CHANNEL, fdu);
 }
 
-int pwm::getFdu()
+double pwm::getFdu()
 {
     return this -> fdu;
 }

@@ -11,14 +11,14 @@ public:
     pwm(int frecventa,int fdu);
     void setFrecventa(int frecventa);
     int getFrecventa();
-    void setFdu(int fdu);
-    int getFdu();
+    void setFdu(double fdu);
+    double getFdu();
     int getRange();
     void init_pwm(int fdu);
 
 private:
     int frecventa;
-    int fdu;
+    double fdu;
     int range;
     int divizor;
 

@@ -13,12 +13,12 @@ pin::pin(int numar,int direction)
 
 void pin::set(int state)
 {
-    if(this->direction == 1 && state == 0)
+    if(this->direction == INPUT && state == 0)
        {
         bcm2835_gpio_write(this -> numar, LOW);
         this ->state = 0;
         }
-    else if(this->direction == 1 &&  state == 1)
+    else if(this->direction == INPUT &&  state == 1)
          {
             bcm2835_gpio_write(this -> numar, HIGH);
             this ->state = 1;
@@ -29,8 +29,7 @@ void pin::set(int state)
 int pin::get()
 {
     if(this -> direction == INPUT)
-    return  bcm2835_gpio_lev(this->numar);
-    else return -1;
+    return this -> state;
 }
 
 void pin::changeDirection()
