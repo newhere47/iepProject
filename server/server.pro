@@ -16,11 +16,14 @@ SOURCES += main.cpp\
     bcm2835_stub.cpp \
     blink.c \
     pin.cpp \
-    pwm.cpp
+    pwm.cpp \
+    spi.cpp
 
 HEADERS  += \
     bcm2835.h \
     pin.h \
-    pwm.h
+    pwm.h \
+    serial.h \
+    spi.h
 
 FORMS    += mainwindow.ui

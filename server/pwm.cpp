@@ -16,8 +16,8 @@ pwm::pwm(uint32_t frecventa,uint32_t duty_cycle)
 void pwm::set_duty_cycle(uint32_t duty_cycle)
 {
 
-   uint32_t range = 1200000 / (this->getFrecventa());
-   uint32_t temp = this->get_duty_cycle();
+   int32_t range = 1200000 / (this->getFrecventa());
+   int32_t temp = this->get_duty_cycle();
    temp = duty_cycle + (duty_cycle*10)/100;
    uint32_t data = temp / 100 * range;
    if(temp >= this -> getRange())
@@ -29,6 +29,7 @@ void pwm::set_duty_cycle(uint32_t duty_cycle)
        bcm2835_pwm_set_data(PWM_CHANNEL, data);
        this->set_duty_cycle(temp);
    }
+
 }
 
 uint32_t pwm::get_duty_cycle()
